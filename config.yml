@@ -1,0 +1,36 @@
+audio:
+  # Device selection might require listing available devices and choosing one.
+  # For loopback, specific device names or APIs (like WASAPI on Windows) might be needed.
+  # Leaving 'default' might capture microphone. User needs to configure this carefully.
+  device_name: "default" # Or specific loopback device name, e.g., "Stereo Mix", "What U Hear", or ID
+  sample_rate: 16000 # Hz, common for STT
+  channels: 1 # Mono
+  chunk_size: 1024 # Samples per frame
+
+stt:
+  # engine can be 'whisper' or 'azure'
+  engine: "whisper"
+  language_hint: "en-US" # BCP-47 language code, e.g., "en-GB", "es-ES"
+  
+  whisper:
+    model_size: "large-v3" # Options: tiny, base, small, medium, large, large-v1, large-v2, large-v3
+    # device: "cuda" # or "cpu" - Whisper will auto-detect if not specified
+
+  azure:
+    subscription_key: "${AZURE_SPEECH_KEY}"
+    region: "${AZURE_SPEECH_REGION}" # e.g., "eastus"
+
+vad: # Voice Activity Detection
+  # Simple energy-based VAD, more sophisticated libraries can be integrated
+  threshold: 300 # Energy threshold to detect speech, might need tuning
+  silence_duration_ms: 1000 # How long silence before considering segment end
+
+logging:
+  log_file_prefix: "transcription_log_"
+  log_directory: "transcripts"
+
+ui:
+  title: "Live Transcription"
+  width: 600
+  height: 400
+  font_size: 12 

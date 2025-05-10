@@ -1,0 +1,29 @@
+# For audio capture - soundcard is a good cross-platform option that supports loopback
+soundcard==0.5.2
+PyAudio==0.2.14 # Often a dependency or good fallback, soundcard might use it or alternatives
+
+# For Speech-to-Text
+openai-whisper==20231117
+azure-cognitiveservices-speech==1.38.0
+
+# For configuration file
+PyYAML==6.0.1
+
+# For UI (Tkinter is built-in, but if we were to use PyQt)
+# PyQt6==6.7.0
+
+# For packaging (used in build.ps1)
+# PyInstaller==6.8.0 # User installs this separately for building
+
+# General utilities
+numpy==1.26.4 # Often a dependency for audio/ML tasks
+
+# For text analysis (summarization, keyword extraction)
+nltk==3.8.1
+rake-nltk==1.0.6
+# Note: nltk may require downloading additional resources like 'punkt' and 'stopwords'
+# import nltk
+# nltk.download('punkt')
+# nltk.download('stopwords')
+
+python-dotenv==1.0.1 
